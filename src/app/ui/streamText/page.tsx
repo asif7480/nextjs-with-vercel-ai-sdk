@@ -2,13 +2,14 @@
 import { useCompletion } from "@ai-sdk/react";
 
 export default function StreamText(){
-    const { input, handleInputChange, handleSubmit, completion, isLoading, error, stop} = useCompletion({
+    const { input, handleInputChange, handleSubmit, completion, isLoading, error, stop, setInput} = useCompletion({
         api: "/api/streamText"
     })
     return(
         <div>
             <form onSubmit={(e) => {
                 e.preventDefault()
+                setInput("")
                 handleSubmit(e)
             }}>
                 <input type="text" placeholder="Enter prompt" value={input} onChange={handleInputChange} />
